@@ -6,6 +6,7 @@ describe("Gilded Rose", () => {
   test("foo", () => {
     const gildedRose = new Shop([new Item("foo", 0, 0)]);
     const items = gildedRose.updateQuality();
-    expect(items[0].name).to.equal("foo");
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"foo","sellIn":-1,"quality":0}`);
   });
 });
