@@ -18,9 +18,9 @@ describe("Gilded Rose", () => {
   });
 
   test("name: foo; quality<50", () => {
-    const gildedRose = new Shop([new Item("Aged Brie2", -10, 10)]);
+    const gildedRose = new Shop([new Item("foo", -10, 10)]);
     const items = gildedRose.updateQuality();
     let res = JSON.stringify(items[0]);
-    expect(res).to.equal(`{"name":"Aged Brie2","sellIn":-11,"quality":8}`);
+    expect(res).to.equal(`{"name":"foo","sellIn":-11,"quality":8}`);
   });
 });
