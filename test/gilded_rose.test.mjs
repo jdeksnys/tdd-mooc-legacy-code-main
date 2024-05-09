@@ -53,18 +53,42 @@ describe("Gilded Rose", () => {
     let res = JSON.stringify(items[0]);
     expect(res).to.equal(`{"name":"foo","sellIn":54,"quality":54}`);
   });
-  test("name: foo; sellIn=0; quality <10", () => {
-    const gildedRose = new Shop([new Item("foo", 0, 10)]);
+  test("name: foo; sellIn=0; quality<10", () => {
+    const gildedRose = new Shop([new Item("foo", 0, 9)]);
     const items = gildedRose.updateQuality();
     let res = JSON.stringify(items[0]);
-    expect(res).to.equal(`{"name":"foo","sellIn":-1,"quality":8}`);
+    expect(res).to.equal(`{"name":"foo","sellIn":-1,"quality":7}`);
   });
   test("name: foo; sellIn=0; quality>10", () => {
+    const gildedRose = new Shop([new Item("foo", 0, 33)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"foo","sellIn":-1,"quality":31}`);
+  });
+  test("name: foo; sellIn=0; quality>50", () => {
     const gildedRose = new Shop([new Item("foo", 0, 55)]);
     const items = gildedRose.updateQuality();
     let res = JSON.stringify(items[0]);
     expect(res).to.equal(`{"name":"foo","sellIn":-1,"quality":53}`);
   });
+  // test("name: foo; sellIn=0; quality<10", () => {
+  //   const gildedRose = new Shop([new Item("foo", 0, 9)]);
+  //   const items = gildedRose.updateQuality();
+  //   let res = JSON.stringify(items[0]);
+  //   expect(res).to.equal(`{"name":"foo","sellIn":-1,"quality":8}`);
+  // });
+  // test("name: foo; sellIn=0; quality>10", () => {
+  //   const gildedRose = new Shop([new Item("foo", 0, 33)]);
+  //   const items = gildedRose.updateQuality();
+  //   let res = JSON.stringify(items[0]);
+  //   expect(res).to.equal(`{"name":"foo","sellIn":-1,"quality":53}`);
+  // });
+  // test("name: foo; sellIn=0; quality>50", () => {
+  //   const gildedRose = new Shop([new Item("foo", 0, 55)]);
+  //   const items = gildedRose.updateQuality();
+  //   let res = JSON.stringify(items[0]);
+  //   expect(res).to.equal(`{"name":"foo","sellIn":-1,"quality":53}`);
+  // });
 
   test("name: Aged Brie; sellIn<0", () => {
     const gildedRose = new Shop([new Item("Aged Brie", -10, 10)]);
