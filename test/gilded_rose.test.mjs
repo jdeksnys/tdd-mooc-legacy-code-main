@@ -88,4 +88,11 @@ describe("Gilded Rose", () => {
     let res = JSON.stringify(items[0]);
     expect(res).to.equal(`{"name":"Aged Brie","sellIn":1,"quality":3}`);
   });
+
+  test("name: Backstage passes to a TAFKAL80ETC concert; sellIn=2; quality=49", () => {
+    const gildedRose = new Shop([new Item("Aged Brie", 2, 49)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Aged Brie","sellIn":1,"quality":50}`);
+  });
 });
