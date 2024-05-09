@@ -12,6 +12,13 @@ export class Shop {
   }
 
   
+  updateQuality() {
+    for (var i = 0; i < this.items.length; i++) {
+      let item = this.items[i];
+      this.extracted(item);
+    }
+    return this.items;
+  }
   
   extracted(item){
       if (item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert") {
@@ -58,12 +65,4 @@ export class Shop {
         }
       }
     }
-
-  updateQuality() {
-    for (var i = 0; i < this.items.length; i++) {
-      let item = this.items[i];
-      this.extracted(item);
-    }
-    return this.items;
-  }
 }
