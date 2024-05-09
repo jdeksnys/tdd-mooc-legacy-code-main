@@ -98,4 +98,11 @@ describe("Gilded Rose", () => {
       expect(err.toString()).to.equal(`TypeError: Cannot create property 'sellIn' on string 'blablabla'`);
     }
   });
+
+  test("name=Aged Brie; sellIn=11; quality=11", () => {
+    const gildedRose = new Shop([new Item("Aged Brie", 11, 11)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Aged Brie","sellIn":10,"quality":12}`);
+  });
 });
