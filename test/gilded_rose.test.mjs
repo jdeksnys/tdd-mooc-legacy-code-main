@@ -54,5 +54,40 @@ describe("Gilded Rose", () => {
     expect(res).to.equal(`{"name":"foo","sellIn":54,"quality":54}`);
   });
 
-
+  test("name: Aged Brie; sellIn<0", () => {
+    const gildedRose = new Shop([new Item("Aged Brie", -10, 10)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Aged Brie","sellIn":-11,"quality":12}`);
+  });
+  test("name: Aged Brie; quality<10", () => {
+    const gildedRose = new Shop([new Item("Aged Brie", 10, -10)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Aged Brie","sellIn":9,"quality":-9}`);
+  });
+  test("name: Aged Brie; quality<10", () => {
+    const gildedRose = new Shop([new Item("Aged Brie", -10, -10)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Aged Brie","sellIn":-11,"quality":-8}`);
+  });
+  test("name: Aged Brie; quality>50", () => {
+    const gildedRose = new Shop([new Item("Aged Brie", 10, 55)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Aged Brie","sellIn":9,"quality":55}`);
+  });
+  test("name: Aged Brie; sellIn>50", () => {
+    const gildedRose = new Shop([new Item("Aged Brie", 55, 10)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Aged Brie","sellIn":54,"quality":11}`);
+  });
+  test("name: Aged Brie; sellIn>50; quality>50", () => {
+    const gildedRose = new Shop([new Item("Aged Brie", 55, 55)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Aged Brie","sellIn":54,"quality":55}`);
+  });
 });
