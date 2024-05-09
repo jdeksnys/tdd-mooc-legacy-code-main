@@ -10,6 +10,13 @@ describe("Gilded Rose", () => {
     expect(res).to.equal(`{"name":"foo","sellIn":-1,"quality":0}`);
   });
 
+  test("none items", () => {
+    const gildedRose = new Shop([]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(undefined);
+  });
+
   test("name: Backstage...", () => {
     const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 0, 0)]);
     const items = gildedRose.updateQuality();
