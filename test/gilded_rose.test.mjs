@@ -90,4 +90,41 @@ describe("Gilded Rose", () => {
     let res = JSON.stringify(items[0]);
     expect(res).to.equal(`{"name":"Aged Brie","sellIn":54,"quality":55}`);
   });
+
+  test("name: Backstage passes to a TAFKAL80ETC concert; sellIn<0", () => {
+    const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", -10, 10)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Backstage passes to a TAFKAL80ETC concert","sellIn":-11,"quality":0}`);
+  });
+  test("name: Backstage passes to a TAFKAL80ETC concert; quality<10", () => {
+    const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 10, -10)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Backstage passes to a TAFKAL80ETC concert","sellIn":9,"quality":-8}`);
+  });
+  test("name: Backstage passes to a TAFKAL80ETC concert; quality<10", () => {
+    const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", -10, -10)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Backstage passes to a TAFKAL80ETC concert","sellIn":-11,"quality":0}`);
+  });
+  test("name: Backstage passes to a TAFKAL80ETC concert; quality>50", () => {
+    const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 10, 55)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Backstage passes to a TAFKAL80ETC concert","sellIn":9,"quality":55}`);
+  });
+  test("name: Backstage passes to a TAFKAL80ETC concert; sellIn>50", () => {
+    const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 55, 10)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Backstage passes to a TAFKAL80ETC concert","sellIn":54,"quality":11}`);
+  });
+  test("name: Backstage passes to a TAFKAL80ETC concert; sellIn>50; quality>50", () => {
+    const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 55, 55)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Backstage passes to a TAFKAL80ETC concert","sellIn":54,"quality":55}`);
+  });
 });
