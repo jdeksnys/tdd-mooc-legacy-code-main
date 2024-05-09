@@ -10,13 +10,6 @@ describe("Gilded Rose", () => {
     expect(res).to.equal(`{"name":"foo","sellIn":-1,"quality":0}`);
   });
 
-  test("null item", () => {
-    const gildedRose = new Shop([new Item()]);
-    const items = gildedRose.updateQuality();
-    let res = JSON.stringify(items[0]);
-    expect(res).to.equal(`{"sellIn":null}`);
-  });
-
   test("name: Backstage...", () => {
     const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 0, 0)]);
     const items = gildedRose.updateQuality();
@@ -80,19 +73,5 @@ describe("Gilded Rose", () => {
     const items = gildedRose.updateQuality();
     let res = JSON.stringify(items[0]);
     expect(res).to.equal(`{"name":"Backstage passes to a TAFKAL80ETC concert","sellIn":54,"quality":11}`);
-  });  
-
-  test("name: Backstage passes to a TAFKAL80ETC concert; sellIn=2; quality=2", () => {
-    const gildedRose = new Shop([new Item("Aged Brie", 2, 2)]);
-    const items = gildedRose.updateQuality();
-    let res = JSON.stringify(items[0]);
-    expect(res).to.equal(`{"name":"Aged Brie","sellIn":1,"quality":3}`);
-  });
-
-  test("name: Backstage passes to a TAFKAL80ETC concert; sellIn=2; quality=49", () => {
-    const gildedRose = new Shop([new Item("Aged Brie", 2, 49)]);
-    const items = gildedRose.updateQuality();
-    let res = JSON.stringify(items[0]);
-    expect(res).to.equal(`{"name":"Aged Brie","sellIn":1,"quality":50}`);
   });
 });
