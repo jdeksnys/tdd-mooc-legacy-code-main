@@ -60,10 +60,10 @@ describe("Gilded Rose", () => {
     expect(res).to.equal(`{"name":"foo","sellIn":-1,"quality":8}`);
   });
   test("name: foo; sellIn=0; quality>10", () => {
-    const gildedRose = new Shop([new Item("foo", 55, 55)]);
+    const gildedRose = new Shop([new Item("foo", 0, 55)]);
     const items = gildedRose.updateQuality();
     let res = JSON.stringify(items[0]);
-    expect(res).to.equal(`{"name":"foo","sellIn":54,"quality":54}`);
+    expect(res).to.equal(`{"name":"foo","sellIn":-1,"quality":53}`);
   });
 
   test("name: Aged Brie; sellIn<0", () => {
