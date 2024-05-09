@@ -140,4 +140,9 @@ describe("Gilded Rose", () => {
     let res = JSON.stringify(items[0]);
     expect(res).to.equal(`{"name":"Aged Brie","sellIn":-1,"quality":50}`);
   });
+
+  test("constructor params ok", () => {
+    let shop = new Shop();
+    expect(shop.items.length).toBe(0);
+  });
 });
