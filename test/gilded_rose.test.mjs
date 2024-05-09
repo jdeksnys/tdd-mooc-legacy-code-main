@@ -199,6 +199,42 @@ describe("Gilded Rose", () => {
     let res = JSON.stringify(items[0]);
     expect(res).to.equal(`{"name":"Sulfuras, Hand of Ragnaros","sellIn":55,"quality":55}`);
   });
+  test("name: Sulfuras, Hand of Ragnaros; sellIn=0; quality<10", () => {
+    const gildedRose = new Shop([new Item("Sulfuras, Hand of Ragnaros", 0, 9)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Sulfuras, Hand of Ragnaros","sellIn":0,"quality":9}`);
+  });
+  test("name: Sulfuras, Hand of Ragnaros; sellIn=0; quality>10", () => {
+    const gildedRose = new Shop([new Item("Sulfuras, Hand of Ragnaros", 0, 33)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Sulfuras, Hand of Ragnaros","sellIn":0,"quality":33}`);
+  });
+  test("name: Sulfuras, Hand of Ragnaros; sellIn=0; quality>50", () => {
+    const gildedRose = new Shop([new Item("Sulfuras, Hand of Ragnaros", 0, 55)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Sulfuras, Hand of Ragnaros","sellIn":0,"quality":55}`);
+  });
+  test("name: Sulfuras, Hand of Ragnaros; sellIn=0; quality<10", () => {
+    const gildedRose = new Shop([new Item("Sulfuras, Hand of Ragnaros", 0, 9)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Sulfuras, Hand of Ragnaros","sellIn":0,"quality":9}`);
+  });
+  test("name: Sulfuras, Hand of Ragnaros; sellIn=0; quality>10", () => {
+    const gildedRose = new Shop([new Item("Sulfuras, Hand of Ragnaros", 0, 33)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Sulfuras, Hand of Ragnaros","sellIn":0,"quality":33}`);
+  });
+  test("name: Sulfuras, Hand of Ragnaros; sellIn=0; quality>50", () => {
+    const gildedRose = new Shop([new Item("Sulfuras, Hand of Ragnaros", 0, 55)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Sulfuras, Hand of Ragnaros","sellIn":0,"quality":55}`);
+  });
 
   test("name: Backstage passes to a TAFKAL80ETC concert; sellIn<0", () => {
     const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", -10, 10)]);
