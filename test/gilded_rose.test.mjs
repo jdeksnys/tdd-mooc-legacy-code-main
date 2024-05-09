@@ -88,4 +88,14 @@ describe("Gilded Rose", () => {
     let res = JSON.stringify(items[0]);
     expect(res).to.equal(`{"name":"Aged Brie","sellIn":9,"quality":50}`);
   });
+
+  test("name=Aged Brie; sellIn=10; quality=50", () => {
+    const gildedRose = new Shop(["blablabla"]);
+    let items;
+    try{
+      items = gildedRose.updateQuality();
+    } catch(err){
+      expect(err.toString()).to.equal(`TypeError: Cannot create property 'sellIn' on string 'blablabla'`);
+    }
+  });
 });
