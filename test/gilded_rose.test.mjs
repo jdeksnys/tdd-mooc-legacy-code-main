@@ -71,24 +71,25 @@ describe("Gilded Rose", () => {
     let res = JSON.stringify(items[0]);
     expect(res).to.equal(`{"name":"foo","sellIn":-1,"quality":53}`);
   });
-  test("name: foo; sellIn=0; quality<10", () => {
-    const gildedRose = new Shop([new Item("foo", 0, 9)]);
+  test("name: foo; sellIn<10; quality=0", () => {
+    const gildedRose = new Shop([new Item("foo", 9, 0)]);
     const items = gildedRose.updateQuality();
     let res = JSON.stringify(items[0]);
-    expect(res).to.equal(`{"name":"foo","sellIn":-1,"quality":7}`);
+    expect(res).to.equal(`{"name":"foo","sellIn":8,"quality":0}`);
   });
-  test("name: foo; sellIn=0; quality>10", () => {
-    const gildedRose = new Shop([new Item("foo", 0, 33)]);
+  test("name: foo; sellIn>10; quality=0", () => {
+    const gildedRose = new Shop([new Item("foo", 33, 0)]);
     const items = gildedRose.updateQuality();
     let res = JSON.stringify(items[0]);
-    expect(res).to.equal(`{"name":"foo","sellIn":-1,"quality":31}`);
+    expect(res).to.equal(`{"name":"foo","sellIn":32,"quality":0}`);
   });
-  test("name: foo; sellIn=0; quality>50", () => {
-    const gildedRose = new Shop([new Item("foo", 0, 55)]);
+  test("name: foo; sellIn>50; quality=50", () => {
+    const gildedRose = new Shop([new Item("foo", 55, 0)]);
     const items = gildedRose.updateQuality();
     let res = JSON.stringify(items[0]);
-    expect(res).to.equal(`{"name":"foo","sellIn":-1,"quality":53}`);
+    expect(res).to.equal(`{"name":"foo","sellIn":54,"quality":0}`);
   });
+
 
   test("name: Aged Brie; sellIn<0", () => {
     const gildedRose = new Shop([new Item("Aged Brie", -10, 10)]);
