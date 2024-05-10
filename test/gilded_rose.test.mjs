@@ -23,12 +23,12 @@ describe("Gilded Rose", () => {
     let res = JSON.stringify(items[0]);
     expect(res).to.equal(`{"name":"foo","sellIn":-11,"quality":8}`);
   });
-  // test("name: foo; quality>50", () => {
-  //   const gildedRose = new Shop([new Item("foo", 10, 55)]);
-  //   const items = gildedRose.updateQuality();
-  //   let res = JSON.stringify(items[0]);
-  //   expect(res).to.equal(`{"name":"foo","sellIn":9,"quality":54}`);
-  // });
+  test("name: foo; quality>50", () => {
+    const gildedRose = new Shop([new Item("foo", 10, 55)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"foo","sellIn":9,"quality":54}`);
+  });
 
   //   test("name: Sulfuras, Hand of Ragnaros; sellIn<0", () => {
   //   const gildedRose = new Shop([new Item("Sulfuras, Hand of Ragnaros", -10, 10)]);
