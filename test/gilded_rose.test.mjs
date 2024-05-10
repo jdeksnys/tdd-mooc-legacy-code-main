@@ -10,11 +10,11 @@ describe("Gilded Rose", () => {
     expect(res).to.equal(`{"name":"foo","sellIn":-1,"quality":0}`);
   });
 
-  test("name: Backstage...", () => {
-    const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 0, 0)]);
+    test("name=foo; sellIn=5; quality=49", () => {
+    const gildedRose = new Shop([new Item("foo", 1, 10)]);
     const items = gildedRose.updateQuality();
     let res = JSON.stringify(items[0]);
-    expect(res).to.equal(`{"name":"Backstage passes to a TAFKAL80ETC concert","sellIn":-1,"quality":0}`);
+    expect(res).toBe(`{"name":"foo","sellIn":0,"quality":9}`);
   });
 
   test("name: foo; sellIn<0", () => {
@@ -28,6 +28,13 @@ describe("Gilded Rose", () => {
     const items = gildedRose.updateQuality();
     let res = JSON.stringify(items[0]);
     expect(res).to.equal(`{"name":"foo","sellIn":9,"quality":54}`);
+  });
+
+    test("name: Sulfuras, Hand of Ragnaros; sellIn<0", () => {
+    const gildedRose = new Shop([new Item("Sulfuras, Hand of Ragnaros", -10, 10)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Sulfuras, Hand of Ragnaros","sellIn":-10,"quality":10}`);
   });
 
   test("name: Aged Brie; sellIn<0", () => {
@@ -49,13 +56,37 @@ describe("Gilded Rose", () => {
     expect(res).to.equal(`{"name":"Aged Brie","sellIn":-1,"quality":55}`);
   });
 
-
-  test("name: Sulfuras, Hand of Ragnaros; sellIn<0", () => {
-    const gildedRose = new Shop([new Item("Sulfuras, Hand of Ragnaros", -10, 10)]);
+    test("name=Aged Brie; sellIn=0; quality=49", () => {
+    const gildedRose = new Shop([new Item("Aged Brie", 0, 49)]);
     const items = gildedRose.updateQuality();
     let res = JSON.stringify(items[0]);
-    expect(res).to.equal(`{"name":"Sulfuras, Hand of Ragnaros","sellIn":-10,"quality":10}`);
+    expect(res).to.equal(`{"name":"Aged Brie","sellIn":-1,"quality":50}`);
   });
+
+    test("name=Aged Brie; sellIn=10; quality=50", () => {
+    const gildedRose = new Shop([new Item("Aged Brie", 10, 50)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Aged Brie","sellIn":9,"quality":50}`);
+  });
+
+  test("name=Aged Brie; sellIn=10; quality=50", () => {
+    const gildedRose = new Shop(["blablabla"]);
+    let items;
+    try{
+      items = gildedRose.updateQuality();
+    } catch(err){
+      expect(err.toString()).to.equal(`TypeError: Cannot create property 'sellIn' on string 'blablabla'`);
+    }
+  });
+
+    test("name: Backstage...", () => {
+    const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 0, 0)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Backstage passes to a TAFKAL80ETC concert","sellIn":-1,"quality":0}`);
+  });
+
   test("name: Backstage passes to a TAFKAL80ETC concert; quality<10", () => {
     const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 10, -10)]);
     const items = gildedRose.updateQuality();
@@ -82,22 +113,7 @@ describe("Gilded Rose", () => {
     expect(res).to.equal(`{"name":"Backstage passes to a TAFKAL80ETC concert","sellIn":4,"quality":23}`);
   });
 
-  test("name=Aged Brie; sellIn=10; quality=50", () => {
-    const gildedRose = new Shop([new Item("Aged Brie", 10, 50)]);
-    const items = gildedRose.updateQuality();
-    let res = JSON.stringify(items[0]);
-    expect(res).to.equal(`{"name":"Aged Brie","sellIn":9,"quality":50}`);
-  });
 
-  test("name=Aged Brie; sellIn=10; quality=50", () => {
-    const gildedRose = new Shop(["blablabla"]);
-    let items;
-    try{
-      items = gildedRose.updateQuality();
-    } catch(err){
-      expect(err.toString()).to.equal(`TypeError: Cannot create property 'sellIn' on string 'blablabla'`);
-    }
-  });
 
   test("name=Backstage passes to a TAFKAL80ETC concert; sellIn=11; quality=11", () => {
     const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 11, 11)]);
@@ -127,19 +143,7 @@ describe("Gilded Rose", () => {
     expect(res).to.equal(`{"name":"Backstage passes to a TAFKAL80ETC concert","sellIn":4,"quality":50}`);
   });    
 
-  test("name=foo; sellIn=5; quality=49", () => {
-    const gildedRose = new Shop([new Item("foo", 1, 10)]);
-    const items = gildedRose.updateQuality();
-    let res = JSON.stringify(items[0]);
-    expect(res).toBe(`{"name":"foo","sellIn":0,"quality":9}`);
-  });
 
-  test("name=Aged Brie; sellIn=0; quality=49", () => {
-    const gildedRose = new Shop([new Item("Aged Brie", 0, 49)]);
-    const items = gildedRose.updateQuality();
-    let res = JSON.stringify(items[0]);
-    expect(res).to.equal(`{"name":"Aged Brie","sellIn":-1,"quality":50}`);
-  });
 
   test("constructor params ok", () => {
     let shop = new Shop();
