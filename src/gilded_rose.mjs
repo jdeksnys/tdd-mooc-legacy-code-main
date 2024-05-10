@@ -45,9 +45,8 @@ export class Shop {
     }
 
     // degrade 2x faster after deadline
-    // if(item.sellIn < 0 && q_val < 0){
     if(item.sellIn <= 0){
-      q_coeff = 2;
+      q_coeff *= 2;
     }
 
     // get quality daily change for Backstage

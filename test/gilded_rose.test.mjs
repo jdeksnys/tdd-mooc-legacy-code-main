@@ -174,4 +174,11 @@ describe("Gilded Rose", () => {
     let res = JSON.stringify(items[0]);
     expect(res).to.equal(`{"name":"Conjured","sellIn":4,"quality":8}`);
   });  
+
+  test("name=Conjured; sellIn=5; quality=10", () => {
+    const gildedRose = new Shop([new Item("Conjured", -1, 10)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Conjured","sellIn":-2,"quality":6}`);
+  });  
 });
