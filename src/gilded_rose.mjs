@@ -15,12 +15,12 @@ export class Shop {
   updateQuality() {
     for (var i = 0; i < this.items.length; i++) {
       let item = this.items[i];
-      this.extracted2(item);
+      this.update(item);
     }
     return this.items;
   }
 
-  extracted2(item){
+  update(item){
     let q_coeff = 1;
     let q_val = -1;
     let q_max = 50;
@@ -58,9 +58,6 @@ export class Shop {
           q_val = 1;
         }
         break;
-      // default:
-      //   q_val = -1;
-      //   break;
     }
 
     // degrade 2x faster after deadline
@@ -92,50 +89,5 @@ export class Shop {
     }
     item.quality = res;
   }
-  
-  // extracted(item){
-  //     if (item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert") {
-  //       if (item.quality > 0) {
-  //         if (item.name != "Sulfuras, Hand of Ragnaros") {
-  //           item.quality = item.quality - 1;
-  //         }
-  //       }
-  //     } else {
-  //       if (item.quality < 50) {
-  //         item.quality = item.quality + 1;
-  //         if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
-  //           if (item.sellIn < 11) {
-  //             if (item.quality < 50) {
-  //               item.quality = item.quality + 1;
-  //             }
-  //           }
-  //           if (item.sellIn < 6) {
-  //             if (item.quality < 50) {
-  //               item.quality = item.quality + 1;
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //     if (item.name != "Sulfuras, Hand of Ragnaros") {
-  //       item.sellIn = item.sellIn - 1;
-  //     }
-  //     if (item.sellIn < 0) {
-  //       if (item.name != "Aged Brie") {
-  //         if (item.name != "Backstage passes to a TAFKAL80ETC concert") {
-  //           if (item.quality > 0) {
-  //             if (item.name != "Sulfuras, Hand of Ragnaros") {
-  //               item.quality = item.quality - 1;
-  //             }
-  //           }
-  //         } else {
-  //           item.quality = item.quality - item.quality;
-  //         }
-  //       } else {
-  //         if (item.quality < 50) {
-  //           item.quality = item.quality + 1;
-  //         }
-  //       }
-  //     }
-  //   }
+
 }
