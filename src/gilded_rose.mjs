@@ -15,9 +15,35 @@ export class Shop {
   updateQuality() {
     for (var i = 0; i < this.items.length; i++) {
       let item = this.items[i];
-      this.extracted(item);
+      this.extracted2(item);
     }
     return this.items;
+  }
+
+  extracted2(item){
+    let q_coeff = 1;
+    let q_val = -1;
+    let q_max = 50;
+
+    // get quality daily change for all items
+    switch(item.name){
+      default:
+        q_val = -1;
+        break;
+    }
+
+    // degrade 2x faster after deadline
+    if(item.sellIn < 0 && q_val < 0){
+      q_coeff = 2;
+    }
+
+    // temporarily calc result for validation before saving
+    item.sellIn -= 1;
+    let res = item.quality + q_val * q_coeff;
+    if((res > q_max && q_val > 0) || res < 0){
+      return;
+    }
+    item.quality = res;
   }
   
   extracted(item){
