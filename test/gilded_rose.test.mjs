@@ -168,4 +168,10 @@ describe("Gilded Rose", () => {
     expect(shop.items.length).toBe(0);
   });
 
+  test("name=Conjured; sellIn=5; quality=10", () => {
+    const gildedRose = new Shop([new Item("Conjured", 5, 10)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Conjured","sellIn":4,"quality":8}`);
+  });  
 });

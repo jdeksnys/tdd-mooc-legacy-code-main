@@ -36,6 +36,9 @@ export class Shop {
       case "Aged Brie":
         q_val = 1;
         break;
+      case "Conjured":
+        q_coeff = 2;
+        break;
       default:
         q_val = -1;
         break;
