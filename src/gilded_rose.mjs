@@ -39,6 +39,25 @@ export class Shop {
       case "Conjured":
         q_coeff = 2;
         break;
+      case "Backstage passes to a TAFKAL80ETC concert":
+        if (item.sellIn <= 5){
+          q_val = (item.quality+3<=q_max)
+            ? 3
+            : (item.quality+2<=q_max)
+              ? 2
+              : (item.quality+1<=q_max)
+                ? 1
+                : 0;
+        } else if (item.sellIn <= 10) {
+          q_val = (item.quality+2<=q_max)
+            ? 2
+            : (item.quality+1<=q_max)
+              ? 1
+              : 0;
+        } else{
+          q_val = 1;
+        }
+        break;
       default:
         q_val = -1;
         break;
@@ -47,32 +66,6 @@ export class Shop {
     // degrade 2x faster after deadline
     if(item.sellIn <= 0){
       q_coeff *= 2;
-    }
-
-    // get quality daily change for Backstage
-    if(item.name == "Backstage passes to a TAFKAL80ETC concert"){
-      let s = item.sellIn;
-      switch(true){
-        case (s <= 5):
-          q_val = (item.quality+3<=q_max)
-            ? 3
-            : (item.quality+2<=q_max)
-              ? 2
-              : (item.quality+1<=q_max)
-                ? 1
-                : 0;
-          break;
-        case (s <= 10):
-          q_val = (item.quality+2<=q_max)
-            ? 2
-            : (item.quality+1<=q_max)
-              ? 1
-              : 0;
-          break;
-        default:
-          q_val = 1;
-          break;
-      }
     }
 
     // update time until sold
@@ -91,7 +84,6 @@ export class Shop {
         temp -= 1;
       }
     }
-
     let res = item.quality + temp;
     if((res > q_max && q_val > 0) || res < 0){
       return;
