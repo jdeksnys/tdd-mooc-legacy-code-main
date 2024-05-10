@@ -33,20 +33,33 @@ export class Shop {
         q_val = 0;
         s_val = 0;
         break;
+      case "Aged Brie":
+        q_val = 1;
+        break;
       default:
         q_val = -1;
         break;
     }
 
     // degrade 2x faster after deadline
-    if(item.sellIn < 0 && q_val < 0){
+    // if(item.sellIn < 0 && q_val < 0){
+    if(item.sellIn <= 0){
       q_coeff = 2;
     }
 
-    // get quality daily change for Aged Brie 
-    if(item.name == "Aged Brie" || item.name == "Backstage passes to a TAFKAL80ETC concert"){
+    // get quality daily change for Backstage
+    if(item.name == "Backstage passes to a TAFKAL80ETC concert"){
       let s = item.sellIn;
       switch(true){
+        case (s <= 5):
+          q_val = (item.quality+3<=q_max)
+            ? 3
+            : (item.quality+2<=q_max)
+              ? 2
+              : (item.quality+1<=q_max)
+                ? 1
+                : 0;
+          break;
         case (s <= 10):
           q_val = (item.quality+2<=q_max)
             ? 2
@@ -69,7 +82,14 @@ export class Shop {
     
     
     // temporarily calc result for validation before saving
-    let res = item.quality + q_val * q_coeff;
+    let temp  = q_val * q_coeff;
+    if(item.quality + temp > q_max){
+      while(item.quality + temp > q_max){
+        temp -= 1;
+      }
+    }
+
+    let res = item.quality + temp;
     if((res > q_max && q_val > 0) || res < 0){
       return;
     }
