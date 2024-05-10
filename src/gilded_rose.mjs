@@ -77,13 +77,14 @@ export class Shop {
       return;
     }
     
-    // temporarily calculate result for validation before saving
+    //if need to add 2 or 3, but allows 1, add 1 (similar if allows 2)
     let temp  = q_val * q_coeff;
     if(item.quality + temp > q_max){
       while(item.quality + temp > q_max){
         temp -= 1;
       }
     }
+    // temporarily calculate result for validation before saving
     let res = item.quality + temp;
     if((res > q_max && q_val > 0) || res < 0){
       return;
