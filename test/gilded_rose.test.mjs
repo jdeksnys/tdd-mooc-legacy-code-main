@@ -30,12 +30,12 @@ describe("Gilded Rose", () => {
     expect(res).to.equal(`{"name":"foo","sellIn":9,"quality":54}`);
   });
 
-  //   test("name: Sulfuras, Hand of Ragnaros; sellIn<0", () => {
-  //   const gildedRose = new Shop([new Item("Sulfuras, Hand of Ragnaros", -10, 10)]);
-  //   const items = gildedRose.updateQuality();
-  //   let res = JSON.stringify(items[0]);
-  //   expect(res).to.equal(`{"name":"Sulfuras, Hand of Ragnaros","sellIn":-10,"quality":10}`);
-  // });
+    test("name: Sulfuras, Hand of Ragnaros; sellIn<0", () => {
+    const gildedRose = new Shop([new Item("Sulfuras, Hand of Ragnaros", -10, 10)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Sulfuras, Hand of Ragnaros","sellIn":-10,"quality":10}`);
+  });
 
   // test("name: Aged Brie; sellIn<0", () => {
   //   const gildedRose = new Shop([new Item("Aged Brie", -10, 10)]);

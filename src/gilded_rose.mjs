@@ -24,9 +24,15 @@ export class Shop {
     let q_coeff = 1;
     let q_val = -1;
     let q_max = 50;
+    let s_val = -1;
 
     // get quality daily change for all items
     switch(item.name){
+      case "Sulfuras, Hand of Ragnaros":
+        q_max = 80;
+        q_val = 0;
+        s_val = 0;
+        break;
       default:
         q_val = -1;
         break;
@@ -38,7 +44,7 @@ export class Shop {
     }
 
     // temporarily calc result for validation before saving
-    item.sellIn -= 1;
+    item.sellIn += s_val;
     let res = item.quality + q_val * q_coeff;
     if((res > q_max && q_val > 0) || res < 0){
       return;
