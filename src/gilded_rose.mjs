@@ -75,15 +75,16 @@ export class Shop {
       }
     }
 
+    // update time until sold
     item.sellIn += s_val;
+
     // check Backstage for quality zero-in
     if(item.sellIn <= 0 && item.name == "Backstage passes to a TAFKAL80ETC concert"){
       item.quality = 0;
       return;
     }
     
-    
-    // temporarily calc result for validation before saving
+    // temporarily calculate result for validation before saving
     let temp  = q_val * q_coeff;
     if(item.quality + temp > q_max){
       while(item.quality + temp > q_max){
