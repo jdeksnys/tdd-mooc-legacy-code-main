@@ -1,4 +1,8 @@
-# [TDD MOOC](https://tdd.mooc.fi/): Legacy code
+# Mutation test results
+[As html](https://github.com/jdeksnys/tdd-mooc-legacy-code-main/blob/main/mutation%20test/index.html)
+[As pdf](https://github.com/jdeksnys/tdd-mooc-legacy-code-main/blob/main/mutation%20test/gilded_rose.pdf)
+
+## [TDD MOOC](https://tdd.mooc.fi/): Legacy code
 
 This is an exercise to practice dealing with legacy code. There are three things you need to do:
 
