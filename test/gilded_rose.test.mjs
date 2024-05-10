@@ -10,12 +10,12 @@ describe("Gilded Rose", () => {
     expect(res).to.equal(`{"name":"foo","sellIn":-1,"quality":0}`);
   });
 
-  //   test("name=foo; sellIn=5; quality=49", () => {
-  //   const gildedRose = new Shop([new Item("foo", 1, 10)]);
-  //   const items = gildedRose.updateQuality();
-  //   let res = JSON.stringify(items[0]);
-  //   expect(res).toBe(`{"name":"foo","sellIn":0,"quality":9}`);
-  // });
+    test("name=foo; sellIn=5; quality=49", () => {
+    const gildedRose = new Shop([new Item("foo", 1, 10)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).toBe(`{"name":"foo","sellIn":0,"quality":9}`);
+  });
 
   // test("name: foo; sellIn<0", () => {
   //   const gildedRose = new Shop([new Item("foo", -10, 10)]);
