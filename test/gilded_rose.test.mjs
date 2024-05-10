@@ -163,10 +163,9 @@ describe("Gilded Rose", () => {
     expect(res).to.equal(`{"name":"Backstage passes to a TAFKAL80ETC concert","sellIn":4,"quality":50}`);
   });    
 
-  // test("constructor params ok", () => {
-  //   let shop = new Shop();
-  //   expect(shop.items.length).toBe(0);
-  // });
-
+  test("constructor params ok", () => {
+    let shop = new Shop();
+    expect(shop.items.length).toBe(0);
+  });
 
 });
