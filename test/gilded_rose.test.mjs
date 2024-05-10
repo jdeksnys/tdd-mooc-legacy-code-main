@@ -135,12 +135,12 @@ describe("Gilded Rose", () => {
 
 
 
-  // test("name=Backstage passes to a TAFKAL80ETC concert; sellIn=11; quality=11", () => {
-  //   const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 11, 11)]);
-  //   const items = gildedRose.updateQuality();
-  //   let res = JSON.stringify(items[0]);
-  //   expect(res).to.equal(`{"name":"Backstage passes to a TAFKAL80ETC concert","sellIn":10,"quality":12}`);
-  // });
+  test("name=Backstage passes to a TAFKAL80ETC concert; sellIn=11; quality=11", () => {
+    const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 11, 11)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Backstage passes to a TAFKAL80ETC concert","sellIn":10,"quality":12}`);
+  });
 
   // test("name=Backstage passes to a TAFKAL80ETC concert; sellIn=10; quality=49", () => {
   //   const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49)]);
