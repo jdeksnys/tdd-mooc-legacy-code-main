@@ -44,7 +44,7 @@ export class Shop {
     }
 
     // get quality daily change for Aged Brie 
-    if(item.name == "Aged Brie"){
+    if(item.name == "Aged Brie" || item.name == "Backstage passes to a TAFKAL80ETC concert"){
       let s = item.sellIn;
       switch(true){
         case (s <= 10):
@@ -60,8 +60,15 @@ export class Shop {
       }
     }
 
-    // temporarily calc result for validation before saving
     item.sellIn += s_val;
+    // check Backstage for quality zero-in
+    if(item.sellIn <= 0 && item.name == "Backstage passes to a TAFKAL80ETC concert"){
+      item.quality = 0;
+      return;
+    }
+    
+    
+    // temporarily calc result for validation before saving
     let res = item.quality + q_val * q_coeff;
     if((res > q_max && q_val > 0) || res < 0){
       return;
