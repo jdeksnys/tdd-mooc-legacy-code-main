@@ -48,7 +48,11 @@ export class Shop {
       let s = item.sellIn;
       switch(true){
         case (s <= 10):
-          q_val = 2;
+          q_val = (item.quality+2<=q_max)
+            ? 2
+            : (item.quality+1<=q_max)
+              ? 1
+              : 0;
           break;
         default:
           q_val = 1;

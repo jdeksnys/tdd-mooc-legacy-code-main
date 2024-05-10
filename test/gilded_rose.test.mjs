@@ -70,12 +70,12 @@ describe("Gilded Rose", () => {
     expect(res).to.equal(`{"name":"Aged Brie","sellIn":-1,"quality":55}`);
   });
 
-  //   test("name=Aged Brie; sellIn=0; quality=49", () => {
-  //   const gildedRose = new Shop([new Item("Aged Brie", 0, 49)]);
-  //   const items = gildedRose.updateQuality();
-  //   let res = JSON.stringify(items[0]);
-  //   expect(res).to.equal(`{"name":"Aged Brie","sellIn":-1,"quality":50}`);
-  // });
+    test("name=Aged Brie; sellIn=0; quality=49", () => {
+    const gildedRose = new Shop([new Item("Aged Brie", 0, 49)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Aged Brie","sellIn":-1,"quality":50}`);
+  });
 
   //   test("name=Aged Brie; sellIn=10; quality=50", () => {
   //   const gildedRose = new Shop([new Item("Aged Brie", 10, 50)]);
