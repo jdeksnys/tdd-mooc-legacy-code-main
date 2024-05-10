@@ -84,15 +84,15 @@ describe("Gilded Rose", () => {
     expect(res).to.equal(`{"name":"Aged Brie","sellIn":9,"quality":50}`);
   });
 
-  // test("name=Aged Brie; sellIn=10; quality=50", () => {
-  //   const gildedRose = new Shop(["blablabla"]);
-  //   let items;
-  //   try{
-  //     items = gildedRose.updateQuality();
-  //   } catch(err){
-  //     expect(err.toString()).to.equal(`TypeError: Cannot create property 'sellIn' on string 'blablabla'`);
-  //   }
-  // });
+  test("name=Aged Brie; sellIn=10; quality=50", () => {
+    const gildedRose = new Shop(["blablabla"]);
+    let items;
+    try{
+      items = gildedRose.updateQuality();
+    } catch(err){
+      expect(err.toString()).to.equal(`TypeError: Cannot create property 'sellIn' on string 'blablabla'`);
+    }
+  });
 
   //   test("name: Backstage...", () => {
   //   const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 0, 0)]);
