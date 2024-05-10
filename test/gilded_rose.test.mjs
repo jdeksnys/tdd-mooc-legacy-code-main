@@ -156,12 +156,12 @@ describe("Gilded Rose", () => {
     expect(res).toBe(`{"name":"Backstage passes to a TAFKAL80ETC concert","sellIn":5,"quality":8}`);
   });
 
-  // test("name=Backstage passes to a TAFKAL80ETC concert; sellIn=5; quality=49", () => {
-  //   const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49)]);
-  //   const items = gildedRose.updateQuality();
-  //   let res = JSON.stringify(items[0]);
-  //   expect(res).to.equal(`{"name":"Backstage passes to a TAFKAL80ETC concert","sellIn":4,"quality":50}`);
-  // });    
+  test("name=Backstage passes to a TAFKAL80ETC concert; sellIn=5; quality=49", () => {
+    const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Backstage passes to a TAFKAL80ETC concert","sellIn":4,"quality":50}`);
+  });    
 
   // test("constructor params ok", () => {
   //   let shop = new Shop();
