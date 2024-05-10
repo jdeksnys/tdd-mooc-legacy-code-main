@@ -51,12 +51,12 @@ describe("Gilded Rose", () => {
     expect(res).to.equal(`{"name":"Sulfuras, Hand of Ragnaros","sellIn":-2,"quality":10}`);
   });
 
-  // test("name: Aged Brie; sellIn<10", () => {
-  //   const gildedRose = new Shop([new Item("Aged Brie", 0, 10)]);
-  //   const items = gildedRose.updateQuality();
-  //   let res = JSON.stringify(items[0]);
-  //   expect(res).to.equal(`{"name":"Aged Brie","sellIn":-1,"quality":12}`);
-  // });
+  test("name: Aged Brie; sellIn<10", () => {
+    const gildedRose = new Shop([new Item("Aged Brie", 0, 10)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Aged Brie","sellIn":-1,"quality":12}`);
+  });
   // test("name: Aged Brie; quality>50", () => {
   //   const gildedRose = new Shop([new Item("Aged Brie", 10, 55)]);
   //   const items = gildedRose.updateQuality();

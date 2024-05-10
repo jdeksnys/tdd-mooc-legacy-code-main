@@ -43,6 +43,19 @@ export class Shop {
       q_coeff = 2;
     }
 
+    // get quality daily change for Aged Brie 
+    if(item.name == "Aged Brie"){
+      let s = item.sellIn;
+      switch(true){
+        case (s <= 10):
+          q_val = 2;
+          break;
+        default:
+          q_val = 1;
+          break;
+      }
+    }
+
     // temporarily calc result for validation before saving
     item.sellIn += s_val;
     let res = item.quality + q_val * q_coeff;
