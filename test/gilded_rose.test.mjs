@@ -181,4 +181,11 @@ describe("Gilded Rose", () => {
     let res = JSON.stringify(items[0]);
     expect(res).to.equal(`{"name":"Conjured","sellIn":-2,"quality":6}`);
   });  
+
+  test("name=Sulfuras, Hand of Ragnaros; sellIn=5; quality=80", () => {
+    const gildedRose = new Shop([new Item("Sulfuras, Hand of Ragnaros", 10, 80)]);
+    const items = gildedRose.updateQuality();
+    let res = JSON.stringify(items[0]);
+    expect(res).to.equal(`{"name":"Sulfuras, Hand of Ragnaros","sellIn":10,"quality":80}`);
+  });  
 });
